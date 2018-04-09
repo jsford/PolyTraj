@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include "path.h"
-#include "polynomial.h"
+#include "trajectory.h"
 #include "shoot.h"
 
 TEST(polynomial_test, test_poly) {
@@ -38,8 +38,8 @@ TEST(path_test, test_params) {
 
   Eigen::Vector3d coeffs;
   coeffs << 1.0, 2.0, 3.0;
-  PolyTraj::Polynomial kDotPoly(coeffs);
-  auto params = PathParams(5.0, kDotPoly);
+  Polynomial kDotPoly(coeffs);
+  auto params = Path::Params(5.0, kDotPoly);
 
   ASSERT_DOUBLE_EQ(params(2.0), 17.0);
 }
@@ -47,12 +47,12 @@ TEST(path_test, test_params) {
 TEST(path_test, test_optimization) {
   using namespace PolyTraj;
 
-  PathState xs;
+  Path::State xs;
   xs << 1.0, 1.0, M_PI_2, -0.5;
-  PathState xe;
+  Path::State xe;
   xe << 10.0, 10.0, M_PI_2, 0.5;
 
-  PathParams p = optimizePath(xs, xe);
+  Path::Params p = Path::optimizeParams(xs, xe);
 
   ASSERT_NEAR(p.S, 13.347, 1e-3);
   ASSERT_NEAR(p.kDotPoly.coeffs[0], 0.13954400, 1e-3);
@@ -64,39 +64,67 @@ TEST(path_test, test_optimization) {
 TEST(path_test, test_simpson) {
   using namespace PolyTraj;
 
-  PathState xs;
+  Path::State xs;
   xs << 0, 0, 0, 0;
 
   Eigen::Vector4d coeffs;
   coeffs << 1.0, 0.1, -0.1, 0.1;
-  PathParams p(10.0, Polynomial(coeffs));
+  Path::Params p(10.0, Polynomial(coeffs));
 
   // Shoot and check endpoint.
-  Path path = shootSimpson(dynamics, xs, p.S, 1001, p);
-  PathState end = path.rightCols(1);
+  Path::Path path = shootSimpson(Path::dynamics, xs, p.S, 1001, p);
+  Path::State end = path.rightCols(1);
 
-  ASSERT_NEAR(end[PSX], 0.922, 1e-1);
-  ASSERT_NEAR(end[PSY], 0.875, 1e-1);
-  ASSERT_NEAR(end[PST], 480.255, 1e-1);
-  ASSERT_NEAR(end[PSK], 231.665, 1e-1);
+  ASSERT_NEAR(end[Path::SX], 0.922, 1e-1);
+  ASSERT_NEAR(end[Path::SY], 0.875, 1e-1);
+  ASSERT_NEAR(end[Path::ST], 480.255, 1e-1);
+  ASSERT_NEAR(end[Path::SK], 231.665, 1e-1);
 }
 
 TEST(path_test, test_trapezoidal) {
-  using namespace PolyTraj;
+  using PolyTraj::shootTrapezoidal;
+  using PolyTraj::Polynomial;
+  using namespace PolyTraj::Path;
 
-  PathState xs;
+  State xs;
   xs << 0, 0, 0, 0;
 
   Eigen::Vector4d coeffs;
   coeffs << 1.0, 0.1, -0.1, 0.1;
-  PathParams p(10.0, Polynomial(coeffs));
+  Params p(10.0, Polynomial(coeffs));
 
   // Shoot and check endpoint.
   Path path = shootTrapezoidal(dynamics, xs, p.S, 1001, p);
-  PathState end = path.rightCols(1);
+  State end = path.rightCols(1);
 
-  ASSERT_NEAR(end[PSX], 0.926, 1e-1);
-  ASSERT_NEAR(end[PSY], 0.867, 1e-1);
-  ASSERT_NEAR(end[PST], 481.025, 1e-1);
-  ASSERT_NEAR(end[PSK], 231.667, 1e-1);
+  ASSERT_NEAR(end[SX], 0.926, 1e-1);
+  ASSERT_NEAR(end[SY], 0.867, 1e-1);
+  ASSERT_NEAR(end[ST], 481.025, 1e-1);
+  ASSERT_NEAR(end[SK], 231.667, 1e-1);
 }
+
+// TODO: Write more tests for the trajectory generator!
+TEST(trajectory_test, test_optimizeParams) {
+  using namespace PolyTraj::Trajectory;
+
+  State xs;
+  xs << 1.0, 1.0, M_PI_2, -0.5, 1.0;
+  State xe;
+  xe << 10.0, 10.0, M_PI_2, 0.5, 5.0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
