@@ -1,9 +1,9 @@
 #include <gtest/gtest.h>
-#include <polynomial.h>
-#include <path.h>
+#include "path.h"
+#include "polynomial.h"
+#include "shoot.h"
 
 TEST(polynomial_test, test_poly) {
-
   Eigen::Vector3d coeffs;
   coeffs << 1.0, 2.0, 3.0;
   PolyTraj::Polynomial poly(coeffs);
@@ -14,7 +14,6 @@ TEST(polynomial_test, test_poly) {
 }
 
 TEST(polynomial_test, test_poly_integral) {
-
   Eigen::Vector3d coeffs;
   coeffs << 1.0, 2.0, 3.0;
   PolyTraj::Polynomial poly(coeffs);
@@ -25,7 +24,6 @@ TEST(polynomial_test, test_poly_integral) {
 }
 
 TEST(polynomial_test, test_poly_derivative) {
-
   Eigen::Vector3d coeffs;
   coeffs << 1.0, 2.0, 3.0;
   PolyTraj::Polynomial poly(coeffs);
@@ -71,10 +69,10 @@ TEST(path_test, test_simpson) {
 
   Eigen::Vector4d coeffs;
   coeffs << 1.0, 0.1, -0.1, 0.1;
-  PathParams p(10.0, {coeffs});
+  PathParams p(10.0, Polynomial(coeffs));
 
   // Shoot and check endpoint.
-  Path path = shootSimpson(xs, p, 1001);
+  Path path = shootSimpson(dynamics, xs, p.S, 1001, p);
   PathState end = path.rightCols(1);
 
   ASSERT_NEAR(end[PSX], 0.922, 1e-1);
@@ -91,10 +89,10 @@ TEST(path_test, test_trapezoidal) {
 
   Eigen::Vector4d coeffs;
   coeffs << 1.0, 0.1, -0.1, 0.1;
-  PathParams p(10.0, {coeffs});
+  PathParams p(10.0, Polynomial(coeffs));
 
   // Shoot and check endpoint.
-  Path path = shootTrapezoidal(xs, p, 1001);
+  Path path = shootTrapezoidal(dynamics, xs, p.S, 1001, p);
   PathState end = path.rightCols(1);
 
   ASSERT_NEAR(end[PSX], 0.926, 1e-1);

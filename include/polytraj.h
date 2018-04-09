@@ -28,7 +28,8 @@ using TrajState = Eigen::Matrix<double, Eigen::Dynamic, 1>;
 using Traj = Eigen::Matrix<double, 5, Eigen::Dynamic>;
 
 /// Generate a trajectory from the initial to the final state.
-Traj generateTraj(const TrajState &initialState, const TrajState &finalState, int points = 101);
+Traj generateTraj(const TrajState &initialState, const TrajState &finalState,
+                  int points = 101);
 
 }  // namespace PolyTraj
 #endif  // POLYTRAJ_POLYTRAJ_H
