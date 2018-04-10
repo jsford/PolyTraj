@@ -3,23 +3,23 @@
 namespace PolyTraj {
 namespace Trajectory {
 
-Params::Params(double S, const Polynomial &kDotPoly,
-               const Polynomial &vDotPoly)
-  : S(S), kDotPoly(kDotPoly), vDotPoly(vDotPoly) {}
+Params::Params(double T, const Polynomial &kDotPoly,
+               const Polynomial &aDotPoly)
+  : T(T), kDotPoly(kDotPoly), aDotPoly(aDotPoly) {}
 
 Params::Params(const Eigen::VectorXd &params, int kDotDegree,
                int vDotDegree)
-  : S(params[0]),
+  : T(params[0]),
     kDotPoly(params.segment(1, kDotDegree)),
-    vDotPoly(params.tail(vDotDegree)) {
+    aDotPoly(params.tail(vDotDegree)) {
   assert(kDotDegree + vDotDegree + 1 == params.size());
 }
 
 double Params::operator()(double s) const { return kDotPoly(s); }
 
 Eigen::VectorXd Params::vector() const {
-  Eigen::VectorXd vec(1 + kDotPoly.deg());
-  vec << S, kDotPoly.coeffs;
+  Eigen::VectorXd vec(1 + kDotPoly.deg() + aDotPoly.deg());
+  vec << T, kDotPoly.coeffs, aDotPoly.coeffs;
   return vec;
 }
 

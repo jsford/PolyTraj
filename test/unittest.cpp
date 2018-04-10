@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "path.h"
-#include "trajectory.h"
 #include "shoot.h"
+#include "trajectory.h"
 
 TEST(polynomial_test, test_poly) {
   Eigen::Vector3d coeffs;
@@ -112,19 +112,3 @@ TEST(trajectory_test, test_optimizeParams) {
   State xe;
   xe << 10.0, 10.0, M_PI_2, 0.5, 5.0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

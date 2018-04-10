@@ -6,37 +6,41 @@
 #include "polynomial.h"
 
 namespace PolyTraj {
-
+namespace Trajectory {
 /// Parameterizes a control sequence for controlling the vehicle along a
 /// trajectory.
-struct TrajParams {
-  double S;
+struct Params {
+  double T;
   Polynomial kDotPoly;
-  Polynomial vDotPoly;
+  Polynomial aDotPoly;
 
-  TrajParams(double S, const Polynomial &kDotPoly, const Polynomial &vDotPoly);
+  Params(double T, const Polynomial &kDotPoly, const Polynomial &aDotPoly);
 
-  explicit TrajParams(const Eigen::VectorXd &params, int kDotDegree,
-                      int vDotDegree);
+  explicit Params(const Eigen::VectorXd &params, int kDotDegree,
+                  int vDotDegree);
 
-  double operator()(const double s) const;
+  double operator()(double s) const;
 
   Eigen::VectorXd vector() const;
 };
 
+}  // namespace Trajectory
+
+namespace Path {
 /// Parameterizes a control sequence for controlling the vehicle along a path.
-struct PathParams {
+struct Params {
   double S;
   Polynomial kDotPoly;
 
-  PathParams(double S, const Polynomial &kDotPoly);
+  Params(double S, const Polynomial &kDotPoly);
 
-  explicit PathParams(const Eigen::VectorXd &params);
+  explicit Params(const Eigen::VectorXd &params);
 
-  double operator()(const double s) const;
+  double operator()(double s) const;
 
   Eigen::VectorXd vector() const;
 };
 
+}  // namespace Path
 }  // namespace PolyTraj
 #endif  // POLYTRAJ_PARAMS_H

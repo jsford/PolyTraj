@@ -3,12 +3,14 @@
 #include <iostream>
 
 int main() {
-  PolyTraj::PathState xs, xe;
-  xs << 0, 0, M_PI_2, 0.0;
-  xe << 10, 10, M_PI_2, 0.0;
+  using namespace PolyTraj::Trajectory;
 
-  PolyTraj::Path path = PolyTraj::generatePath(xs, xe, 100);
+  State xs, xe;
+  xs << 0, 0, M_PI_2, 0.0, 1.0, 0.0;
+  xe << 10, 10, M_PI_2, 0.0, 5.0, 0.0;
+
+  Trajectory traj = generate(xs, xe, 4, 4, 100);
 
   Eigen::IOFormat CleanFmt(4, 0, ", ", "\n", "[", "]");
-  std::cout << path.transpose().format(CleanFmt) << std::endl;
+  std::cout << traj.transpose().format(CleanFmt) << std::endl;
 }

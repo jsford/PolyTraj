@@ -30,10 +30,14 @@ add_library(PolyTrajLib
         include/polytraj.h
         )
 
-# Don't like making internal headers public...
 target_include_directories(PolyTrajLib PUBLIC include)
 target_include_directories(PolyTrajLib PRIVATE src)
 target_link_libraries(PolyTrajLib Eigen3::Eigen CppOptLib)
+
+target_compile_options(PolyTrajLib PRIVATE
+        -Wall
+        )
+
 
 # Build examples.
 add_executable(run_examples examples/main.cpp)

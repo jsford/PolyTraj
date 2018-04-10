@@ -39,8 +39,8 @@ inline Eigen::MatrixXd shootSimpson(Fun func,
                                     Args&&... args) {
   double h = T / static_cast<double>(panels);
 
-  Path path = Path::Zero(xs.size(), panels + 1);
-  PathState f0, f1, f2;
+  Eigen::MatrixXd path = Eigen::MatrixXd::Zero(xs.size(), panels + 1);
+  Eigen::VectorXd f0, f1, f2;
   f0 = func(0.0, xs, args...);
   path.col(0) = xs;
 

@@ -10,25 +10,24 @@
 #include <Eigen/Dense>
 
 namespace PolyTraj {
+namespace Path {
 
 /// Define the vehicle dynamics xDot = f(s, x, u(s))
-PathState dynamics(double s, const PathState &x, const PathParams &params);
+State dynamics(double s, const State &x, const Params &params);
 
 /// Guess path parameters.
-PathParams initPathParams(const PathState &xs, const PathState &xe);
+Params initParams(const State &xs, const State &xe, int kDotDeg);
 
 /// Create a path! Go from start to end.
-PathParams optimizePath(const PathState &xs, const PathState &xe);
+Params optimizeParams(const State &xs, const State &xe, int kDotDeg = 4);
 
-class PathOptimizationProblem : public ::cppoptlib::Problem<double> {
- public:
-
-  PathState xs;
-  PathState xe;
+class OptimizationProblem : public ::cppoptlib::Problem<double> {
+public:
+  State xs;
+  State xe;
   int N;
 
-  PathOptimizationProblem(const PathState &xs, const PathState &xe,
-                          int N = 100);
+  OptimizationProblem(const State &xs, const State &xe, int N = 100);
 
   double value(const cppoptlib::Problem<double>::TVector &q);
   // void gradient(const cppoptlib::Problem<double>::TVector& q,
@@ -37,5 +36,6 @@ class PathOptimizationProblem : public ::cppoptlib::Problem<double> {
   // cppoptlib::Problem<double>::THessian& hess);
 };
 
+}  // namespace Path
 }  // namespace PolyTraj
 #endif  // POLYTRAJ_PATH_H
