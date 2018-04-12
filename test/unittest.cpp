@@ -52,7 +52,7 @@ TEST(path_test, test_optimization) {
   path::State xe;
   xe << 10.0, 10.0, M_PI_2, 0.5;
 
-  path::Params p = path::optimizeParams(xs, xe);
+  path::Params p = path::optimizeParams(xs, xe, 4);
 
   ASSERT_NEAR(p.S, 13.347, 1e-3);
   ASSERT_NEAR(p.kDotPoly.coeffs[0], 0.13954400, 1e-3);

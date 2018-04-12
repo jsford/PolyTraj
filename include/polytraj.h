@@ -8,11 +8,11 @@ namespace path {
 
 /// A PathState contains vehicle x, y, theta, and curvature values.
 enum StateLayoutEnum : int {
-  SX = 0,   ///< Index of the x coordinate.
-  SY = 1,   ///< Index of the y coordinate.
-  ST = 2,   ///< Index of the theta coordinate.
-  SK = 3,   ///< Index of the curvature coordinate.
-  SSZ = 4   ///< Size of the state vector.
+  SX = 0,  ///< Index of the x coordinate.
+  SY = 1,  ///< Index of the y coordinate.
+  ST = 2,  ///< Index of the theta coordinate.
+  SK = 3,  ///< Index of the curvature coordinate.
+  SSZ = 4  ///< Size of the state vector.
 };
 using State = Eigen::Matrix<double, SSZ, 1>;
 
@@ -20,22 +20,23 @@ using State = Eigen::Matrix<double, SSZ, 1>;
 using Path = Eigen::Matrix<double, SSZ, Eigen::Dynamic>;
 
 /// Generate a path from the initial to the final state..
-Path generate(const State &initialState, const State &finalState,
+Path generate(const State &initialState, const State &finalState, int kDotDeg,
               int points = 101);
 
-} // namespace path
+}  // namespace path
 
 namespace trajectory {
 
-/// A Trajectory::State contains vehicle x, y, theta, curvature, and velocity values.
+/// A Trajectory::State contains vehicle x, y, theta, curvature, and velocity
+/// values.
 enum StateLayoutEnum : int {
-  SX = 0,   ///< Index of the x coordinate.
-  SY = 1,   ///< Index of the y coordinate.
-  ST = 2,   ///< Index of the theta coordinate.
-  SK = 3,   ///< Index of the curvature coordinate.
-  SV = 4,   ///< Index of the velocity coordinate.
-  SA = 5,   ///< Index of the acceleration coordinate.
-  SSZ = 6   ///< Size of the state vector.
+  SX = 0,  ///< Index of the x coordinate.
+  SY = 1,  ///< Index of the y coordinate.
+  ST = 2,  ///< Index of the theta coordinate.
+  SK = 3,  ///< Index of the curvature coordinate.
+  SV = 4,  ///< Index of the velocity coordinate.
+  SA = 5,  ///< Index of the acceleration coordinate.
+  SSZ = 6  ///< Size of the state vector.
 };
 using State = Eigen::Matrix<double, SSZ, 1>;
 
@@ -46,6 +47,6 @@ using Trajectory = Eigen::Matrix<double, SSZ, Eigen::Dynamic>;
 Trajectory generate(const State &initialState, const State &finalState,
                     int kDotDeg, int vDotDeg, int points = 101);
 
-} // namespace trajectory
-} // namespace polytraj
+}  // namespace trajectory
+}  // namespace polytraj
 #endif  // POLYTRAJ_POLYTRAJ_H

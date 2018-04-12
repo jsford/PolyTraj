@@ -56,8 +56,8 @@ Params optimizeParams(const State &xs, const State &xe, int kDotDeg) {
   return Params(p);
 }
 
-Path generate(const State &initialState, const State &finalState, int points) {
-  Params params = optimizeParams(initialState, finalState);
+Path generate(const State &initialState, const State &finalState, int kDotDeg, int points) {
+  Params params = optimizeParams(initialState, finalState, kDotDeg);
 
   return shootSimpson(dynamics, initialState, params.S, points - 1, params);
 }

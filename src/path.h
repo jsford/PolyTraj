@@ -19,7 +19,7 @@ State dynamics(double s, const State &x, const Params &params);
 Params initParams(const State &xs, const State &xe, int kDotDeg);
 
 /// Create a path! Go from start to end.
-Params optimizeParams(const State &xs, const State &xe, int kDotDeg = 4);
+Params optimizeParams(const State &xs, const State &xe, int kDotDeg);
 
 class OptimizationProblem : public ::cppoptlib::Problem<double> {
 public:
