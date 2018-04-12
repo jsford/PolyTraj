@@ -16,37 +16,8 @@ set(VERSION_MINOR   0   CACHE STRING "Project minor version number.")
 set(VERSION_PATCH   0   CACHE STRING "Project patch version number.")
 mark_as_advanced(VERSION_MAJOR VERSION_MINOR VERSION_PATCH)
 
-
-# Find necessary libs.
-find_package(Eigen3 3.3 REQUIRED NO_MODULE)
-
-# Pull in included external libs.
-add_subdirectory(external)
-
-# Build polytraj library.
-add_library(PolyTrajLib
-
-        src/path.h
-        src/path.cpp
-
-        src/trajectory.h
-        src/trajectory.cpp
-
-        src/shoot.h
-
-        src/polynomial.h
-        src/polynomial.cpp
-
-        src/params.h
-        src/params.cpp
-
-        include/polytraj.h
-        )
-
-target_include_directories(PolyTrajLib PUBLIC include)
-target_include_directories(PolyTrajLib PRIVATE src)
-target_link_libraries(PolyTrajLib Eigen3::Eigen CppOptLib)
-target_compile_options(PolyTrajLib PRIVATE -Wall)
+# Build the PolyTrajLib target.
+add_subdirectory(src)
 
 # Build examples.
 if(BUILD_EXAMPLES)
