@@ -17,7 +17,7 @@ set(VERSION_PATCH   0   CACHE STRING "Project patch version number.")
 mark_as_advanced(VERSION_MAJOR VERSION_MINOR VERSION_PATCH)
 
 # Build the PolyTrajLib target.
-add_subdirectory(src)
+add_subdirectory(lib)
 
 # Build examples.
 if(BUILD_EXAMPLES)

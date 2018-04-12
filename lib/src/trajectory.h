@@ -1,8 +1,8 @@
 #ifndef POLYTRAJ_TRAJECTORY_H
 #define POLYTRAJ_TRAJECTORY_H
 
-#include <params.h>
-#include <polytraj.h>
+#include "params.h"
+#include "polytraj.h"
 
 #include <cppoptlib/meta.h>
 #include <cppoptlib/problem.h>

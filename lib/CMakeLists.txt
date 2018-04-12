@@ -9,26 +9,28 @@ add_subdirectory(${PROJECT_SOURCE_DIR}/external ${CMAKE_BINARY_DIR}/external)
 # Build polytraj library.
 add_library(PolyTrajLib
 
-        path.h
-        path.cpp
+        src/path.h
+        src/path.cpp
 
-        trajectory.h
-        trajectory.cpp
+        src/trajectory.h
+        src/trajectory.cpp
 
-        shoot.h
+        src/shoot.h
 
-        polynomial.h
-        polynomial.cpp
+        src/polynomial.h
+        src/polynomial.cpp
 
-        params.h
-        params.cpp
+        src/params.h
+        src/params.cpp
+
+        include/polytraj.h
         )
 
 # Grab headers from the include directory.
-target_include_directories(PolyTrajLib PUBLIC ${PROJECT_SOURCE_DIR}/include)
+target_include_directories(PolyTrajLib PUBLIC include)
 
 # Grab headers from this src directory. Don't share them with clients.
-target_include_directories(PolyTrajLib PRIVATE ${PROJECT_SOURCE_DIR}/src)
+target_include_directories(PolyTrajLib PRIVATE src)
 
 # Pull in Eigen for linear algebra.
 # Pull in CppOptLib for optimization.

@@ -1,12 +1,12 @@
 #ifndef POLYTRAJ_PATH_H
 #define POLYTRAJ_PATH_H
 
-#include <params.h>
-#include <polynomial.h>
-#include <polytraj.h>
+#include "params.h"
+#include "polynomial.h"
+#include "polytraj.h"
 
-#include <cppoptlib/meta.h>
-#include <cppoptlib/problem.h>
+#include "cppoptlib/meta.h"
+#include "cppoptlib/problem.h"
 #include <Eigen/Dense>
 
 namespace polytraj {
