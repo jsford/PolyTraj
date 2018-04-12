@@ -17,7 +17,7 @@ OptimizationProblem::OptimizationProblem(const State &xs, const State &xe,
                                          int N)
   : xs(xs), xe(xe), N(N) {}
 
-double OptimizationProblem::value(const TVector &q) {
+double OptimizationProblem::value(const cppoptlib::Problem<double>::TVector &q) {
   Params params(q);
 
   Path path = shootSimpson(dynamics, xs, params.S, N, params);

@@ -4,18 +4,12 @@
 #include <Eigen/Dense>
 #include <functional>
 #include <utility>
-#include "params.h"
-#include "path.h"
 
 namespace PolyTraj {
 
 template <class Fun, class... Args>
-inline Eigen::MatrixXd shootTrapezoidal(Fun& func,
-                                        const Eigen::VectorXd &xs,
-                                        double T,
-                                        int panels,
-                                        Args&&... args
-                                        ) {
+inline Eigen::MatrixXd shootTrapezoidal(Fun &func, const Eigen::VectorXd &xs,
+                                        double T, int panels, Args &&... args) {
   double h = T / static_cast<double>(panels);
 
   Eigen::VectorXd f0 = func(0.0, xs, std::forward<Args...>(args...));
@@ -24,7 +18,8 @@ inline Eigen::MatrixXd shootTrapezoidal(Fun& func,
   path.col(0) = xs;
 
   for (int i = 1; i < panels + 1; ++i) {
-    Eigen::VectorXd f1 = func(i * h, path.col(i - 1), std::forward<Args...>(args...));
+    Eigen::VectorXd f1 =
+        func(i * h, path.col(i - 1), std::forward<Args...>(args...));
     path.col(i) = path.col(i - 1) + (f0 + f1) * h / 2.0;
     f0 = f1;
   }
@@ -32,11 +27,8 @@ inline Eigen::MatrixXd shootTrapezoidal(Fun& func,
 };
 
 template <class Fun, class... Args>
-inline Eigen::MatrixXd shootSimpson(Fun func,
-                                    const Eigen::VectorXd &xs,
-                                    double T,
-                                    int panels,
-                                    Args&&... args) {
+inline Eigen::MatrixXd shootSimpson(Fun func, const Eigen::VectorXd &xs,
+                                    double T, int panels, Args &&... args) {
   double h = T / static_cast<double>(panels);
 
   Eigen::MatrixXd path = Eigen::MatrixXd::Zero(xs.size(), panels + 1);

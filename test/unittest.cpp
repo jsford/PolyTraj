@@ -108,7 +108,7 @@ TEST(trajectory_test, test_optimizeParams) {
   using namespace PolyTraj::Trajectory;
 
   State xs;
-  xs << 1.0, 1.0, M_PI_2, -0.5, 1.0;
+  xs << 1.0, 1.0, M_PI_2, -0.5, 1.0, 0.0;
   State xe;
-  xe << 10.0, 10.0, M_PI_2, 0.5, 5.0;
+  xe << 10.0, 10.0, M_PI_2, 0.5, 5.0, 0.0;
 }

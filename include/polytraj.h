@@ -8,9 +8,13 @@ namespace Path {
 
 /// A PathState contains vehicle x, y, theta, and curvature values.
 enum StateLayoutEnum : int {
-  SX = 0, SY = 1, ST = 2, SK = 3, SSZ = 4
+  SX = 0,   ///< Index of the x coordinate.
+  SY = 1,   ///< Index of the y coordinate.
+  ST = 2,   ///< Index of the theta coordinate.
+  SK = 3,   ///< Index of the curvature coordinate.
+  SSZ = 4   ///< Size of the state vector.
 };
-using State = Eigen::Vector4d;
+using State = Eigen::Matrix<double, SSZ, 1>;
 
 /// A Path is a list of PathStates.
 using Path = Eigen::Matrix<double, SSZ, Eigen::Dynamic>;
@@ -25,7 +29,13 @@ namespace Trajectory {
 
 /// A Trajectory::State contains vehicle x, y, theta, curvature, and velocity values.
 enum StateLayoutEnum : int {
-  SX = 0, SY = 1, ST = 2, SK = 3, SV = 4, SA = 5, SSZ = 6
+  SX = 0,   ///< Index of the x coordinate.
+  SY = 1,   ///< Index of the y coordinate.
+  ST = 2,   ///< Index of the theta coordinate.
+  SK = 3,   ///< Index of the curvature coordinate.
+  SV = 4,   ///< Index of the velocity coordinate.
+  SA = 5,   ///< Index of the acceleration coordinate.
+  SSZ = 6   ///< Size of the state vector.
 };
 using State = Eigen::Matrix<double, SSZ, 1>;
 
