@@ -4,8 +4,8 @@
 
 #include <cppoptlib/solver/neldermeadsolver.h>
 
-namespace PolyTraj {
-namespace Trajectory {
+namespace polytraj {
+namespace trajectory {
 
 State dynamics(double t, const State &x, const Params &params) {
   State xDot;
@@ -20,8 +20,8 @@ State dynamics(double t, const State &x, const Params &params) {
 }
 
 Params initParams(const State &xs, const State &xe, int kDotDeg, int aDotDeg) {
-  Path::Params pathParams =
-    Path::optimizeParams(xs.head(Path::SSZ), xe.head(Path::SSZ), kDotDeg);
+  path::Params pathParams =
+    path::optimizeParams(xs.head(path::SSZ), xe.head(path::SSZ), kDotDeg);
 
   Polynomial aDotPoly(Eigen::VectorXd::Zero(aDotDeg));
 
@@ -61,5 +61,5 @@ double OptimizationProblem::value(
   return cost;
 }
 
-}  // namespace Trajectory
-}  // namespace PolyTraj
+}  // namespace trajectory
+}  // namespace polytraj

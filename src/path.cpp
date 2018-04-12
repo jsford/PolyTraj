@@ -4,8 +4,8 @@
 #include <cppoptlib/solver/neldermeadsolver.h>
 #include <cppoptlib/solver/newtondescentsolver.h>
 
-namespace PolyTraj {
-namespace Path {
+namespace polytraj {
+namespace path {
 
 State dynamics(const double s, const State &x, const Params &params) {
   State xDot;
@@ -62,5 +62,5 @@ Path generate(const State &initialState, const State &finalState, int points) {
   return shootSimpson(dynamics, initialState, params.S, points - 1, params);
 }
 
-}  // namespace Path
-}  // namespace PolyTraj
+}  // namespace path
+}  // namespace polytraj

@@ -5,8 +5,8 @@
 #include "params.h"
 #include "polynomial.h"
 
-namespace PolyTraj {
-namespace Trajectory {
+namespace polytraj {
+namespace trajectory {
 /// Parameterizes a control sequence for controlling the vehicle along a
 /// trajectory.
 struct Params {
@@ -24,9 +24,9 @@ struct Params {
   Eigen::VectorXd vector() const;
 };
 
-}  // namespace Trajectory
+}  // namespace trajectory
 
-namespace Path {
+namespace path {
 /// Parameterizes a control sequence for controlling the vehicle along a path.
 struct Params {
   double S;
@@ -41,6 +41,6 @@ struct Params {
   Eigen::VectorXd vector() const;
 };
 
-}  // namespace Path
-}  // namespace PolyTraj
+}  // namespace path
+}  // namespace polytraj
 #endif  // POLYTRAJ_PARAMS_H

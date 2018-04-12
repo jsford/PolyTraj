@@ -4,7 +4,7 @@
 #include <Eigen/Dense>
 #include <cstddef>
 
-namespace PolyTraj {
+namespace polytraj {
 
 class Polynomial {
 public:
@@ -22,5 +22,5 @@ public:
 
 };
 
-} // namespace PolyTraj
+} // namespace polytraj
 #endif //POLYTRAJ_POLYNOMIAL_H

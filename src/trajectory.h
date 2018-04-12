@@ -7,8 +7,8 @@
 #include <cppoptlib/meta.h>
 #include <cppoptlib/problem.h>
 
-namespace PolyTraj {
-namespace Trajectory {
+namespace polytraj {
+namespace trajectory {
 
 State dynamics(double t, const State &x, const Params &params);
 
@@ -35,6 +35,6 @@ public:
   // cppoptlib::Problem<double>::THessian& hess);
 };
 
-}  // namespace Trajectory
-}  // namespace PolyTraj
+}  // namespace trajectory
+}  // namespace polytraj
 #endif  // POLYTRAJ_TRAJECTORY_H

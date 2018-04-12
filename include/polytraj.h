@@ -3,8 +3,8 @@
 
 #include <Eigen/Dense>
 
-namespace PolyTraj {
-namespace Path {
+namespace polytraj {
+namespace path {
 
 /// A PathState contains vehicle x, y, theta, and curvature values.
 enum StateLayoutEnum : int {
@@ -23,9 +23,9 @@ using Path = Eigen::Matrix<double, SSZ, Eigen::Dynamic>;
 Path generate(const State &initialState, const State &finalState,
               int points = 101);
 
-} // namespace Path
+} // namespace path
 
-namespace Trajectory {
+namespace trajectory {
 
 /// A Trajectory::State contains vehicle x, y, theta, curvature, and velocity values.
 enum StateLayoutEnum : int {
@@ -46,6 +46,6 @@ using Trajectory = Eigen::Matrix<double, SSZ, Eigen::Dynamic>;
 Trajectory generate(const State &initialState, const State &finalState,
                     int kDotDeg, int vDotDeg, int points = 101);
 
-} // namespace Trajectory
-} // namespace PolyTraj
+} // namespace trajectory
+} // namespace polytraj
 #endif  // POLYTRAJ_POLYTRAJ_H

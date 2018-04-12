@@ -9,8 +9,8 @@
 #include <cppoptlib/problem.h>
 #include <Eigen/Dense>
 
-namespace PolyTraj {
-namespace Path {
+namespace polytraj {
+namespace path {
 
 /// Define the vehicle dynamics xDot = f(s, x, u(s))
 State dynamics(double s, const State &x, const Params &params);
@@ -36,6 +36,6 @@ public:
   // cppoptlib::Problem<double>::THessian& hess);
 };
 
-}  // namespace Path
-}  // namespace PolyTraj
+}  // namespace path
+}  // namespace polytraj
 #endif  // POLYTRAJ_PATH_H

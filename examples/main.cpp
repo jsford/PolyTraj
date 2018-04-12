@@ -3,7 +3,7 @@
 #include <iostream>
 
 int main() {
-  using namespace PolyTraj::Trajectory;
+  using namespace polytraj::trajectory;
 
   State xs, xe;
   xs << 0, 0, M_PI_2, 0.0, 1.0, 0.0;

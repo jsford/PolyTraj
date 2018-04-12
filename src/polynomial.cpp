@@ -1,6 +1,6 @@
 #include <polynomial.h>
 
-namespace PolyTraj {
+namespace polytraj {
 
 Polynomial::Polynomial(const Eigen::VectorXd &coeffs) : coeffs(coeffs) {}
 
@@ -34,4 +34,4 @@ long int Polynomial::deg() const {
   return coeffs.size();
 }
 
-} // namespace PolyTraj
+} // namespace polytraj

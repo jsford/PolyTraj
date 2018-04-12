@@ -1,7 +1,7 @@
 #include "params.h"
 
-namespace PolyTraj {
-namespace Trajectory {
+namespace polytraj {
+namespace trajectory {
 
 Params::Params(double T, const Polynomial &kDotPoly,
                const Polynomial &aDotPoly)
@@ -23,9 +23,9 @@ Eigen::VectorXd Params::vector() const {
   return vec;
 }
 
-} // namespace Trajectory
+} // namespace trajectory
 
-namespace Path {
+namespace path {
 
 Params::Params(double S, const Polynomial &kDotPoly)
   : S(S), kDotPoly(kDotPoly) {}
@@ -41,5 +41,5 @@ Eigen::VectorXd Params::vector() const {
   return vec;
 }
 
-} // namespace Path
-} // namespace PolyTraj
+} // namespace path
+} // namespace polytraj

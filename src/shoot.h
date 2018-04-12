@@ -5,7 +5,7 @@
 #include <functional>
 #include <utility>
 
-namespace PolyTraj {
+namespace polytraj {
 
 template <class Fun, class... Args>
 inline Eigen::MatrixXd shootTrapezoidal(Fun &func, const Eigen::VectorXd &xs,
@@ -54,5 +54,5 @@ inline Eigen::MatrixXd shootSimpson(Fun func, const Eigen::VectorXd &xs,
   return path;
 }
 
-}  // namespace PolyTraj
+}  // namespace polytraj
 #endif  // POLYTRAJ_SHOOT_H

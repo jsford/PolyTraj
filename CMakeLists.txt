@@ -22,7 +22,7 @@ find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 # Pull in included external libs.
 add_subdirectory(external)
 
-# Build PolyTraj library.
+# Build polytraj library.
 add_library(PolyTrajLib
 
         src/path.h
