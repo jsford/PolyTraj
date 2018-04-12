@@ -1,4 +1,4 @@
-## PolyTraj 
+## PolyTraj Documentation
 PolyTraj is a C++ trajectory generation library for autonomous vehicle motion planning based on ["Reactive Nonholonomic Trajectory Generation via Parametric Optimal Control"](http://frc.ri.cmu.edu/~alonzo/pubs/papers/ijrr02TrajGen.pdf).
 
 ### Installation
@@ -6,13 +6,13 @@ PolyTraj is a C++ trajectory generation library for autonomous vehicle motion pl
 2. Install [GTest](https://github.com/google/googletest) if you want to run the tests.
 
 ```
-git clone --recurse-submodules -j2 [https://github.com/jsford/PolyTraj]()
+git clone --recurse-submodules https://github.com/jsford/PolyTraj
 cd PolyTraj
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_EXAMPLES=ON  -DBUILD_TESTS=ON -DBUILD_DOCS=ON ..
 make
-sudo make install
+# sudo make install (Don't do this yet!)
 ```
 
 ### Examples

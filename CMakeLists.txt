@@ -5,9 +5,10 @@ project(PolyTraj)
 set(CMAKE_CXX_STANDARD 14)
 
 # Select what to build.
-option(BUILD_EXAMPLES "Build example programs." ON)
-option(BUILD_TESTS    "Build test programs."    ON)
-option(BUILD_DOCS     "Build documentation."    ON)
+option(BUILD_SHARED_LIBS   "Build as shared library." OFF)
+option(BUILD_EXAMPLES      "Build example programs."   ON)
+option(BUILD_TESTS         "Build test programs."      ON)
+option(BUILD_DOCS          "Build documentation."      ON)
 
 # Set Version Info
 set(VERSION_MAJOR   0   CACHE STRING "Project major version number.")
