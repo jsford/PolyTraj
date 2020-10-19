@@ -31,6 +31,6 @@ cd PolyTraj/build/test/<br>
 
 ### Contact
 Jordan Ford<br>
-[jordan@andrew.cmu.edu](mailto:jordan@andrew.cmu.edu)<br>
+[jsford@andrew.cmu.edu](mailto:jsford@andrew.cmu.edu)<br>
 
 
