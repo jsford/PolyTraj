@@ -1,4 +1,4 @@
-## PolyTraj Documentation
+## PolyTraj
 PolyTraj is a C++ trajectory generation library for autonomous vehicle motion planning based on ["Reactive Nonholonomic Trajectory Generation via Parametric Optimal Control"](http://frc.ri.cmu.edu/~alonzo/pubs/papers/ijrr02TrajGen.pdf). Given a start pose and an end pose, PolyTraj will generate a C2 continuous path connecting the two poses. Unlike methods based on interpolating splines, this method generates kinematically feasible paths.
 
 ![A path plotted using PolyTraj](./figures/example.png)
