@@ -1,6 +1,8 @@
 ## PolyTraj Documentation
 PolyTraj is a C++ trajectory generation library for autonomous vehicle motion planning based on ["Reactive Nonholonomic Trajectory Generation via Parametric Optimal Control"](http://frc.ri.cmu.edu/~alonzo/pubs/papers/ijrr02TrajGen.pdf).
 
+![A path plotted using PolyTraj]('figures/example.png')
+
 ### Installation
 1. Install [Eigen](https://eigen.tuxfamily.org/dox/GettingStarted.html).
 2. Install [GTest](https://github.com/google/googletest) if you want to run the tests.

@@ -36,7 +36,7 @@ int main() {
 
   std::cout << "Start Posture: " << xs.transpose().format(CleanFmt)
             << std::endl;
-  std::cout << "End  Posture:  " << xs.transpose().format(CleanFmt)
+  std::cout << "End  Posture:  " << xe.transpose().format(CleanFmt)
             << std::endl;
   std::cout << std::endl;
 
